@@ -1,6 +1,6 @@
 import React from "react";
 import GoogleLogin from "react-google-login";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import shareVideo from "../Assets/share.mp4";
 import logo from "../Assets/logowhite.png";
@@ -25,6 +25,10 @@ const Login = () => {
       navigate("/", { replace: true });
     });
   };
+
+  const onGoogleFail = () => {
+    alert("something went wrong try again later");
+  };
   return (
     <div className="flex justify-start items-center flex-col h-screen">
       <div className="relative w-full h-full">
@@ -47,7 +51,7 @@ const Login = () => {
               render={(renderProps) => (
                 <button
                   type="button"
-                  className="bg-mainColor bg-mainColor flex justify-center items-center p-3 rounded-lg cursor-pointer outline-none"
+                  className="bg-mainColor flex justify-center items-center p-3 rounded-lg cursor-pointer outline-none"
                   onClick={renderProps.onClick}
                   disabled={renderProps.disabled}
                 >
@@ -55,7 +59,7 @@ const Login = () => {
                 </button>
               )}
               onSuccess={responseGoogle}
-              onFailure={responseGoogle}
+              onFailure={onGoogleFail}
               cookiePolicy="single_host_origin"
             />
           </div>
