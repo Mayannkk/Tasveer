@@ -116,10 +116,10 @@ const PinDetail = ({ user }) => {
             </p>
           </Link>
           <div className="flex flex-wrap mt-6 gap-3">
-            <Link to={`user-profile/${pinDetail.postedBy._id}`}>
+            <Link to={`user-profile/${user._id}`}>
               <img
                 className="w-10 h-10 rounded-full cursor-pointer"
-                src={pinDetail.postedBy?.image}
+                src={user.image}
                 alt="user-profile"
               />
             </Link>
@@ -170,7 +170,10 @@ const PinDetail = ({ user }) => {
           <MasonryLayout pins={pins} />
         </>
       ) : (
-        <Spinner message="Loading more posts like this..." />
+        <h2 className="text-center font-bold text-2x mt-8 mb-4">
+          No Related Pins
+        </h2>
+        /* <Spinner message="Loading more posts like this..." /> */
       )}
     </>
   );
